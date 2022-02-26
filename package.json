@@ -1,0 +1,19 @@
+{
+  "name": "cse341-final_project",
+  "version": "1.0.0",
+  "description": "Final Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rbridge1104byui/CSE341-Final_project.git"
+  },
+  "author": "Team 4",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rbridge1104byui/CSE341-Final_project/issues"
+  },
+  "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme"
+}
