@@ -11,6 +11,6 @@
 - QA integration- Gary
 - Testing Lead - Jeremy
 
-## [Project Plan]()
+## [Project Plan](https://github.com/rbridge1104byui/CSE341-Final_project/blob/main/Project%20Plan.pdf)
 
 
