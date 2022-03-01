@@ -1,6 +1,16 @@
 # Grandmas Recipies
 ## Team 4 Final Project
 
+### Roles:
+- PM - Robert
+- Devops lead - Chris
+- Design/ Frontend Lead- Ashley & Ellie
+- Engineering Lead - Josh
+- QA integration- Gary
+- Testing Lead - Jeremy
+
+### Git workflow:
+
 1. Please clone the project using the following command: 
 `git clone https://github.com/rbridge1104byui/CSE341-Final_project.git`
 
@@ -52,13 +62,7 @@
 
 1. Questions? Ask in Slack or check out [this handy guide](https://github.com/joshnh/Git-Commands): 
 
-## Roles
-- PM   Robert Bridge
-- Devops lead - Chris Blount
-- Design/ Frontend Lead- Ashley Ellie
-- Engineering Lead - Josh
-- QA integration- Gary
-- Testing Lead - Jeremy
+
 
 ## [Project Plan](https://github.com/rbridge1104byui/CSE341-Final_project/blob/main/Project%20Plan.pdf)
 
