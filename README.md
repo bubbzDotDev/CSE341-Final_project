@@ -32,6 +32,8 @@
 
 1. You can also select the `Pull Request` tab to proceed and find the same `Compare & pull request` button.
 
+1. If all else fails, select the green `New pull request` button and choose the branch you want to pull into `dev`. On the `Comparing changes` screen, compare changes and then select `Create pull request`.
+
 1. After clicking the green button, on the **Open a pull request** page, make sure to select the branch dropdown and choose `dev` if it's not already selected.
 
 1. Leave any comments you like and select the `Create pull request` button.
