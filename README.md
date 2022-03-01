@@ -28,7 +28,7 @@
 
 1. Finally, run `git push` to send your work to the remote repository.
 
-1. TODO: Chris to add Pull Request instructions
+1. Once ready for a Pull Request to merge your changes into `dev`, select the `Pull Request` tab in the repository in your web browser.
 
 1. Questions? Ask in Slack or check out [this handy guide](https://github.com/joshnh/Git-Commands): 
 
