@@ -14,8 +14,6 @@
 
 1. Send your newly created branch to the remote repository so you can push to it: `git push origin [branch name]`
 
-1. You may need to set an upstream branch when trying to push: `git push --set-upstream origin [branch name]`
-
 1. Get to work! Commit your changes often with the following commands:
 `git add .`
 `git commit -m "My detailed commit message"`
@@ -25,6 +23,8 @@
 1. You can also run `git fetch` to see all changes to the repository.
 
 1. At any time, use `git status` for hints on what needs to be done next.
+
+1. You may need to set an upstream branch when trying to push in the next step: `git push --set-upstream origin [branch name]`
 
 1. Finally, run `git push` to send your work to the remote repository.
 
