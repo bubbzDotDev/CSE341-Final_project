@@ -1,12 +1,12 @@
-# Grandmas Recipies
+# Grandma's Recipies
 ## Team 4 Final Project
 
 ### Roles:
 - PM - Robert
 - Devops lead - Chris
-- Design/ Frontend Lead- Ashley & Ellie
+- Design/ Frontend Lead - Ashley & Ellie
 - Engineering Lead - Josh
-- QA integration- Gary
+- QA integration - Gary
 - Testing Lead - Jeremy
 
 ### Git workflow:
