@@ -26,9 +26,25 @@
 
 1. You may need to set an upstream branch when trying to push in the next step: `git push --set-upstream origin [branch name]`
 
-1. Finally, run `git push` to send your work to the remote repository.
+1. Finally, run `git push` to send your work to the remote repository. 
 
-1. Once ready for a Pull Request to merge your changes into `dev`, select the `Pull Request` tab in the repository in your web browser.
+1. Once ready to merge your feature into `dev`, visit the GitHub repository in the browser. You should see a yellow box with a green button `Compare & pull request` regarding your feature branch, near the top of the repository.
+
+1. You can also select the `Pull Request` tab to proceed and find the same `Compare & pull request` button.
+
+1. After clicking the green button, on the **Open a pull request** page, make sure to select the branch dropdown and choose `dev` if it's not already selected.
+
+1. Leave any comments you like and select the `Create pull request` button.
+
+1. If you'd like a certain person to review it, select their account in the `Reviewers` section on the right.
+
+1. Once reviewed, the `Merge pull request` button can be selected.
+
+1. **Note: We'll iron out how the reviewing will work with some practice to see what the best system will be. I'll keep this documentation updated with whatever is preferred. - Chris**
+
+1. Click `Confirm merge`.
+
+1. When you receive the following message: `Pull request successfully merged and closed`, you can safely delete the feature branch with the button to the right.
 
 1. Questions? Ask in Slack or check out [this handy guide](https://github.com/joshnh/Git-Commands): 
 
