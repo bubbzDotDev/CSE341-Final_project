@@ -44,7 +44,9 @@
 
 1. Click `Confirm merge`.
 
-1. When you receive the following message: `Pull request successfully merged and closed`, you can safely delete the feature branch with the button to the right.
+1. When you receive the following message: `Pull request successfully merged and closed`, you can safely delete the remote feature branch with the button to the right.
+
+1. To delete the branch locally, switch to `dev` and run `git branch -d [branch name]` and then repeat steps starting at step 3 or 5 to start your next feature!
 
 1. Questions? Ask in Slack or check out [this handy guide](https://github.com/joshnh/Git-Commands): 
 
