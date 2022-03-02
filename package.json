@@ -4,7 +4,9 @@
   "description": "Final Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "start-server": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/rbridge1104byui/CSE341-Final_project/issues"
   },
-  "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme"
+  "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-session": "^1.17.2"
+  }
 }
