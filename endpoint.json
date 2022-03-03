@@ -1,0 +1,35 @@
+{
+    "user": {
+        "firstName": "Ashley",
+        "lastName": "Zufelt",
+        "email": "me@email.com",
+        "username": "some-name-1",
+        "pass": "hashed password"
+    },
+    "recipe-list": {
+        "recipe-1": {
+            "recipe-id": "001",
+            "title": "Yummy Recipe Name",
+            "category": "get value from drop-down selection list",
+            "serving": "24",
+            "cook_time": "2 hours",
+            "ingredient-list": {
+                "ingredient-1": {
+                    "qty": "2",
+                    "measurement": "cups",
+                    "item": "flour",
+                    "notes": "sifted"
+                },
+                "ingredient-2": {
+                    "qty": "1.5",
+                    "measurement": "TB",
+                    "item": "baking powder",
+                    "notes": " "
+                }
+            },
+            "directions": "A text area for a paragraph of directions",
+            "rating": "A star rating"
+        }
+
+    }
+}

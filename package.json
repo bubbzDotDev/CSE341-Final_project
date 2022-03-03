@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/rbridge1104byui/CSE341-Final_project/issues"
   },
-  "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme"
+  "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme",
+  "dependencies": {
+    "node": "^17.5.0"
+  },
+   "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
