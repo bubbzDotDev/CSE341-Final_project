@@ -19,14 +19,9 @@
   },
   "homepage": "https://github.com/rbridge1104byui/CSE341-Final_project#readme",
   "dependencies": {
-<<<<<<< HEAD
     "node": "^17.5.0"
   },
    "devDependencies": {
     "nodemon": "^2.0.15"
-=======
-    "express": "^4.17.3",
-    "express-session": "^1.17.2"
->>>>>>> 1bede3e (Mongo db connection successfull)
   }
 }
