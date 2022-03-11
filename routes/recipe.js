@@ -20,17 +20,50 @@ const recipeController = require('../controllers/recipe');
  *      type: object
  *      required:
  *          -title
- *          -author
+ *          -category
+ *          -serving
+ *          -cook_time
+ *          -directions
+ *          -creator
  *      properties:
- *        title: 
- *          type: string
- *          description: The Recipe Title
- *        author:
- *          type: string
- *          description: The Recipe Author
- *      example:
- *        title: Chocolate Chip Cookies
- *        author: Grandma Patsy
+ *          title:
+ *              type: string
+ *              desc: The Recipe Title
+ *          category:
+ *              type: Schema.Types.ObjectId
+ *              desc: What type of dish?
+ *          serving:
+ *              type: number
+ *              desc: How many the recipe serves
+ *          cook_time:
+ *              type: number
+ *              desc: Total time prep & cook
+ *          ingredient_list:
+ *              type: Schema.Types.ObjectId
+ *              desc: a list of ingredients
+ *              individual_ingredient:
+ *                  qty: number
+ *                  measurement: string
+ *                  ingredient_item: string
+ *                  notes: string
+ *          directions:
+ *              type: string
+ *              required: true
+ *          rating:
+ *              type: number
+ *          creator:
+ *              type: string
+ *              description: The Recipe Author
+ *              required: true
+ *          example:
+ *              title: Chocolate Chip Cookies
+ *              category: dessert
+ *              serving: 24
+ *              cook_time: 1 hour
+ *              ingredient_list: flour, egg, butter, baking soda, vanilla, brown sugar, chocolate chips
+ *              directions: Mix all ingredients together until well blended, drop by tablespoonfuls, bake @350 for 10-12 minutes
+ *              rating: 5
+ *              creator: Grandma Patsy
  * 
  */
 
