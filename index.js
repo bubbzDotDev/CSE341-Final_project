@@ -36,7 +36,8 @@ const options = {
       description: "A simple Express Recipe API"
     },
     servers: [{
-      url: "http://localhost:3000"
+      url: "http://localhost:3000",
+      url: MONGODB_URI
     }]
   },
   apis: ["./routes/*.js"]

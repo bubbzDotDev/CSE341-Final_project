@@ -65,3 +65,26 @@ Swagger documentation for the /routes/:
  *              creator: Grandma Patsy
  * 
  */
+
+
+
+ paths:
+  /subscribe:
+    post:
+      summary: Subscribe to a webhook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                callbackUrl:   # Callback URL
+                  type: string
+                  format: uri
+                  example: https://myserver.com/send/callback/here
+              required:
+                - callbackUrl
+      responses:
+        '201':
+          description: Webhook created

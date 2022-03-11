@@ -12,6 +12,7 @@ const recipeController = require('../controllers/recipe');
 
 //These multi-line comments are what feed the Swagger-jsdoc and populate the Swagger UI with the GET/POST/PUT/DELETE
 
+
 /**
  * @swagger
  * components:
@@ -48,13 +49,11 @@ const recipeController = require('../controllers/recipe');
  *                  notes: string
  *          directions:
  *              type: string
- *              required: true
  *          rating:
  *              type: number
  *          creator:
  *              type: string
  *              description: The Recipe Author
- *              required: true
  *          example:
  *              title: Chocolate Chip Cookies
  *              category: dessert
@@ -110,9 +109,16 @@ const recipeController = require('../controllers/recipe');
  *            application/json:
  *              schema:
  *                $ref: '#/components/schemas/Recipe'
+ *                properties:
+ *                      callbackUrl: mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
  *     responses:
  *       200:
- *          description: The recipe description by id 
+ *          description: Success message 
  *          contents:
  *            application/json:
  *              schema:
@@ -120,7 +126,7 @@ const recipeController = require('../controllers/recipe');
  *       500:
  *          description: Server Error
  */
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
     try {
         const recipe = {
             ...req.body
