@@ -1,7 +1,32 @@
-Installed:
+Dependencies Installed:
 swagger-jsdoc 
 swagger-ui-express
 connect-mongodb-session
 
 When you npm start, go to http://localhost:3000/api-docs/ to view Swagger ui
 
+
+Swagger documentation for the /routes/:
+-uses a multi-line comment with the @swagger to start. Adds API end points that can be used and tested in the Swagger UI on localhost
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Recipe:
+ *      type: object
+ *      required:
+ *          -title
+ *          -author
+ *      properties:
+ *        title: 
+ *          type: string
+ *          description: The Recipe Title
+ *        author:
+ *          type: string
+ *          description: The Recipe Author
+ *      example:
+ *        title: Chocolate Chip Cookies
+ *        author: Grandma Patsy
+ * 
+ */
