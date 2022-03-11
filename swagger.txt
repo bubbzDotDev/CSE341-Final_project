@@ -1,0 +1,7 @@
+Installed:
+swagger-jsdoc 
+swagger-ui-express
+connect-mongodb-session
+
+When you npm start, go to http://localhost:3000/api-docs/ to view Swagger ui
+
