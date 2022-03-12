@@ -10,4 +10,5 @@ router.put(
     'admin/recipe/:recipeId', recipeController.updateRecipe
 );
 
+router.delete('admin/recipe/:recipeId', recipeController.deleteRecipe);
 module.exports = router;
