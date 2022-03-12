@@ -15,13 +15,13 @@ const {
  */
 
 //GET all recipes
-// router.get('/recipe', recipeController.getRecipe);
+router.get('/recipes', recipeController.getRecipes);
 
 //POST add recipe
 router.post('/add-recipe', recipeController.postAddRecipe);
 
 //GET recipe by ID
-// router.get('/recipe/:recipeId', recipeController.getRecipeById);
+router.get('/recipes/:recipeId', recipeController.getRecipeById);
 
 //PUT update recipe
 // router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
