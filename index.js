@@ -36,11 +36,10 @@ const options = {
       description: "A simple Express Recipe API"
     },
     servers: [{
-      url: "http://localhost:3000",
-      url: MONGODB_URI
+      url: "http://localhost:3000"
     }]
   },
-  apis: ["./routes/*.js"]
+  apis: ["./swagger/*.js"]
 }
 // This tells Swagger-jsdoc where/how to parse the comments
 const specs = swaggerJsdoc(options)
@@ -69,8 +68,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 // Using our routes as defined.
-app.use('/recipe', recipeRoutes);
-app.use('/user', userRoutes);
+app.use(recipeRoutes);
+app.use(userRoutes);
 
 mongoose
   .connect(MONGODB_URI)
