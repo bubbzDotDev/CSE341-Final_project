@@ -51,7 +51,7 @@ exports.postAddRecipe = (req, res, next) => {
 exports.getRecipeById = (req, res, next) => {
   Recipe.findById(req.params.recipeId)
   .then(recipe => {
-    res.send(recipe); // TODO: May need pagination
+    res.send(recipe);
   })
   .catch(error => {
     return res.status(500).send(error);
