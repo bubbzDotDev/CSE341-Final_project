@@ -1,16 +1,4 @@
-Dependencies Installed:
-swagger-jsdoc 
-swagger-ui-express
-connect-mongodb-session
-
-When you npm start, go to http://localhost:3000/api-docs/ to view Swagger ui
-
-
-Swagger documentation is in /swagger directory:
--uses a multi-line comment with the @swagger to start. 
--Adds API end points that can be used and tested in the Swagger UI on localhost
--These endpoints are based on the recipe.json & recipe/routes previously created
-
+//These multi-line comments are what feed the Swagger-jsdoc and populate the Swagger UI with the GET/POST/PUT/DELETE
 
 /**
  * @swagger
@@ -63,4 +51,78 @@ Swagger documentation is in /swagger directory:
  * 
  */
 
+//sets up header on Swagger UI
+/**
+ * @swagger
+ * tags:
+ *   name: Recipes
+ *   description: Recipe Managing API
+ */
 
+
+//GET all recipes
+/**
+ * @swagger
+ * /recipes:
+ *   get:
+ *      summary: Get all recipes
+ *      tags: [Recipes]
+ */
+
+
+
+//POST create new recipe
+/**
+ * @swagger
+ * /add-recipe:
+ *   post:
+ *     summary: Create a new recipe
+ *     tags: [Recipes]
+ *     requestBody:
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *                properties:
+ *                      callbackUrl: https://localhost:3000/
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *       500:
+ *          description: Server Error
+ */
+
+//GET recipe by ID
+/**
+ * @swagger
+ * /recipes/{id}:
+ *   get:
+ *    summary: Get a recipe by id
+ *    tags: [Recipes]
+ */
+
+//PUT recipe by id
+/**
+ * @swagger
+ * /recipes:
+ *    put:
+ *      tags: [Recipes]
+ */
+
+
+//DELETE recipe by id
+/**
+ * @swagger
+ * /recipes:
+ *    delete:
+ *      tags: [Recipes]
+ */

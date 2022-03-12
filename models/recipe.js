@@ -10,7 +10,7 @@ const recipeSchema = new Schema({
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category',
-        required: true
+        required: false
     },
     serving: {
         type: Number,
@@ -34,7 +34,7 @@ const recipeSchema = new Schema({
     creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: false
     }
 });
 
