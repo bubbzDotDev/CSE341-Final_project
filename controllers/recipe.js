@@ -11,6 +11,15 @@ const {
 
 
 //GET recipes
+exports.getRecipes = (req, res, next) => {
+  Recipe.find()
+    .then(recipes => {
+      res.send(recipes); // TODO: May need pagination
+    })
+    .catch(error => {
+      return res.status(500).send(error);
+    });
+}
 
 //POST recipe
 exports.postAddRecipe = (req, res, next) => {
@@ -39,6 +48,15 @@ exports.postAddRecipe = (req, res, next) => {
 };
 
 //GET recipe by ID
+exports.getRecipeById = (req, res, next) => {
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+    res.send(recipe);
+  })
+  .catch(error => {
+    return res.status(500).send(error);
+  });
+}
 
 //PUT recipe by ID
 
