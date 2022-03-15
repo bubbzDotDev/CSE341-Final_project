@@ -19,6 +19,9 @@
  *          lastName:
  *              type: string
  *              desc: User's Last Name
+ *          email:
+ *              type: string
+ *              desc: User's email address
  *          username:
  *              type: string
  *              desc: User's username to login
@@ -27,14 +30,14 @@
  *              desc: Password
  *          recipes:
  *              type: Schema.Types.ObjectId
- *              desc: a list of recipes
+ *              desc: Recipes from this contributor
  *          example:
- *              firstName: Chocolate Chip Cookies
- *              lastName: dessert
- *              email: 24
- *              username: 1 hour
- *              password: 
- *              recipes: 
+ *              firstName: Cookie
+ *              lastName: Monster
+ *              email: blue_fur@sesamestreet.com
+ *              username: choc_chip4life
+ *              password: monsterchoc
+ *              recipes: Monster Chocolate Chip Cookie
  * 
  */
 
@@ -42,7 +45,7 @@
 /**
  * @swagger
  * tags:
- *   name: User
+ *   name: Users
  *   description: Registered user accounts
  */
 
@@ -58,7 +61,7 @@
 
 
 
-//POST create new recipe
+//POST create new user
 /**
  * @swagger
  * /add-user:
@@ -91,7 +94,7 @@
 //GET user by ID
 /**
  * @swagger
- * /uses/{id}:
+ * /users/{id}:
  *   get:
  *     summary: Get User by id
  *     tags: [Users]
@@ -113,5 +116,5 @@
  * /users:
  *    delete:
  *      summary: Delete a User
- *      tags: [User]
+ *      tags: [Users]
  */
