@@ -23,7 +23,8 @@ const MONGODB_URI = 'mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.
 //updated from sessions to a list of recipes
 const db = new MongoDB({
   uri: MONGODB_URI,
-  recipes: []
+  recipes: [],
+  users: []
 });
 
 //Swagger set up
