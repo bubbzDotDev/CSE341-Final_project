@@ -16,6 +16,7 @@ const swaggerJsdoc = require("swagger-jsdoc")
 //routes
 const recipeRoutes = require('./routes/recipe');
 const userRoutes = require('./routes/user');
+const ingredientRoutes = require('./routes/ingredient');
 
 const MONGODB_URI = 'mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
@@ -71,6 +72,7 @@ app.use(bodyParser.urlencoded({
 // Using our routes as defined.
 app.use(recipeRoutes);
 app.use(userRoutes);
+app.use(ingredientRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
