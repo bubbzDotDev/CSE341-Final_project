@@ -1,5 +1,5 @@
 const express = require('express');
-const { body } = require('express-validator');
+
 
 const router = express.Router();
 const recipeController = require('../controllers/recipe');
@@ -37,6 +37,6 @@ router.get('/recipes/:recipeId', recipeController.getRecipeById);
 // );
 //DELETE recipe
 
-router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
+router.delete('/recipes/:recipeId', recipeController.deleteRecipe);
 
 module.exports = router;
