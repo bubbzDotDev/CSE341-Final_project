@@ -2,6 +2,7 @@ const User = require('../models/user');
 const {
   validationResult
 } = require('express-validator/check');
+const user = require('../models/user');
 
 
 /**
@@ -61,3 +62,31 @@ exports.postAddUser = (req, res, next) => {
 //PUT user by ID
 
 //DELETE user by ID
+
+exports.deleteUser = (req, res, next) => {
+  
+  User.findById(req.params.userId)
+  .then(user => {
+      if (!user) {
+          const error = new Error ('Could not find User.');
+          console.log ("No user found")
+          error.statusCode = 404;
+          throw error;
+      }
+      
+
+      return User.findByIdAndRemove(req.params.userId);
+
+  })
+  .then(result => {
+      console.log(result);
+      res.status(200).json({message: 'Deleted user. '});
+  })
+  .catch(err => {
+      if (!err.statusCode) {
+          err.statusCode = 500;
+      }
+      next(err);
+  });
+
+};

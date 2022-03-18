@@ -37,7 +37,7 @@ router.post('/add-user', userController.postAddUser);
 // router.put('/edit-user/:userId', userController.putUpdateUser);
 
 //DELETE recipe
-// router.delete('/delete-user/:userId', userController.deleteUser);
+router.delete('/users/:userId', userController.deleteUser);
 
 
 module.exports = router;
