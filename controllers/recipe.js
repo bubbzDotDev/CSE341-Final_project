@@ -1,9 +1,10 @@
 const Recipe = require('../models/recipe')
-const isAuth = require('../middleware/is-auth')
+//const isAuth = require('../middleware/is-auth')
 
 exports.deleteRecipe = (req, res, next) => {
     //get recipie id, delete recipe,
     const recipeId = req.params.postID;
+    console.log("made it here")
     Recipe.findById(recipeId)
     .then(recipe => {
         if (!recipe) {

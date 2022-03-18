@@ -9,6 +9,8 @@ const router = express.Router();
 // router.put(
 //     'admin/recipe/:recipeId', recipeController.updateRecipe
 // );
+//DELETE recipe
 
-router.delete('admin/recipe/:recipeId', recipeController.deleteRecipe);
+router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
+
 module.exports = router;
