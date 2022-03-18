@@ -3,19 +3,50 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const recipeRoutes = require('./routes/recipe');
-const userRoutes = require('./routes/user');
-
 const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
+
+// Swagger API requires
+const swaggerUI = require("swagger-ui-express")
+const swaggerJsdoc = require("swagger-jsdoc")
+
+//routes
+const recipeRoutes = require('./routes/recipe');
+const userRoutes = require('./routes/user');
+
 const MONGODB_URI = 'mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-const store = new MongoDBStore({
+
+
+//updated from sessions to a list of recipes
+const db = new MongoDB({
   uri: MONGODB_URI,
-  collection: 'sessions'
+  recipes: [],
+  users: []
 });
+
+//Swagger set up
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Recipe API",
+      version: "1.0.0",
+      description: "A simple Express Recipe API"
+    },
+    servers: [{
+      url: "http://localhost:3000"
+    }]
+  },
+  apis: ["./swagger/*.js"]
+}
+// This tells Swagger-jsdoc where/how to parse the comments
+const specs = swaggerJsdoc(options)
+//specify specs to build UI & view api docs
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
+
 
 // This allows us to make requests through the api.
 app.use((req, res, next) => {
@@ -28,9 +59,18 @@ app.use((req, res, next) => {
   next();
 });
 
+//access in routes
+app.db = db;
+
+//parse json body of the request
+app.use(express.json())
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
 // Using our routes as defined.
-app.use('/recipe', recipeRoutes);
-app.use('/user', userRoutes);
+app.use(recipeRoutes);
+app.use(userRoutes);
 
 mongoose
   .connect(MONGODB_URI)
