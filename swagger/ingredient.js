@@ -4,59 +4,58 @@
  * @swagger
  * components:
  *  schemas:
- *    User:
+ *    Ingredient:
  *      type: object
  *      required:
- *        -firstName
- *        -lastName
- *        -email
- *        -username
- *        -password
+ *        -qty
+ *        -measurement
+ *        -item
+ *        -notes
  *      properties:
- *          firstName:
+ *          qty:
+ *              type: number
+ *              desc: Quantity of measurement number
+ *          measurement:
  *              type: string
- *              desc: User's First Name
- *          lastName:
+ *              desc: method of measurement 
+ *          item:
  *              type: string
- *              desc: User's Last Name
- *          email:
+ *              desc: ingredient item
+ *          notes:
  *              type: string
- *              desc: User's email address
- *          username:
- *              type: string
- *              desc: User's username to login
- *          password:
- *              type: string
- *              desc: Password
- *          recipes:
- *              type: Schema.Types.ObjectId
- *              desc: Recipes from this contributor
+ *              desc: notes about ingredient
  *          example:
- *              firstName: Cookie
- *              lastName: Monster
- *              email: blue_fur@sesamestreet.com
- *              username: choc_chip4life
- *              password: monsterchoc
- *              recipes: Monster Chocolate Chip Cookie
- * 
+ *              qty: 2
+ *              measurement: cups
+ *              item: flour
+ *              notes: sifted
  */
 
 //sets up header on Swagger UI
 /**
  * @swagger
  * tags:
- *   name: Users
- *   description: Registered user accounts
+ *    name: Ingredients
+ *    description: Add ingredients
  */
 
 
 //GET all users
 /**
  * @swagger
- * /users:
+ * /ingredient:
  *   get:
- *     summary: 
- *     tags: [Users]
+ *     summary: Get all Ingredients
+ *     tags: [Ingredients]
+ *     responses:
+ *        200:
+ *            description: Success message 
+ *            contents:
+ *              application / json:
+ *                schema:
+ *                  $ref: '#/components/schemas/Recipe' 
+ *        500:
+ *            description: Server Error
  */
 
 
@@ -64,15 +63,15 @@
 //POST create new user
 /**
  * @swagger
- * /add-user:
+ * /add-ingredient:
  *   post:
- *     summary: Create a new user account
- *     tags: [Users]
+ *     summary: Create a new ingredient
+ *     tags: [Ingredients]
  *     requestBody:
  *          content: 
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/components/schemas/Ingredient'
  *                properties:
  *                      callbackUrl: https://localhost:3000/
  *                      type: string
@@ -86,7 +85,7 @@
  *          contents:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/components/schemas/Ingredient'
  *       500:
  *          description: Server Error
  */
@@ -94,27 +93,27 @@
 //GET user by ID
 /**
  * @swagger
- * /users/{id}:
+ * /ingredient/{id}:
  *   get:
  *     summary: 
- *     tags: [Users]
+ *     tags: [Ingredients]
  */
 
 //PUT recipe by id
 /**
  * @swagger
- * /users:
+ * /ingredients:
  *    put:
  *      summary: 
- *      tags: [Users]
+ *      tags: [Ingredients]
  */
 
 
 //DELETE recipe by id
 /**
  * @swagger
- * /users:
+ * /ingredients:
  *    delete:
  *      summary: 
- *      tags: [Users]
+ *      tags: [Ingredients]
  */

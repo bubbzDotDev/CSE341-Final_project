@@ -3,6 +3,8 @@ const {
   validationResult
 } = require('express-validator/check');
 
+const mongoose = require('mongoose');
+
 
 /**
  * Added comments for each controller export to be placed. 
@@ -26,15 +28,21 @@ exports.postAddRecipe = (req, res, next) => {
   const title = req.body.title;
   const serving = req.body.serving;
   const cook_time = req.body.cook_time;
+  const ingredient_list = req.body.ingredient_list;
   const directions = req.body.directions;
   const rating = req.body.rating;
+  const creator = mongoose.Types.ObjectId(req.body.creator);
+
+  let ingredientObjArray = ingredient_list.map(s => mongoose.Types.ObjectId(s));
 
   const recipe = new Recipe({
     title: title,
     serving: serving,
-    cook_time,
+    cook_time: cook_time,
+    ingredient_list: ingredientObjArray,
     directions: directions,
-    rating: rating
+    rating: rating,
+    creator: creator
   });
 
   recipe.save()
@@ -50,12 +58,12 @@ exports.postAddRecipe = (req, res, next) => {
 //GET recipe by ID
 exports.getRecipeById = (req, res, next) => {
   Recipe.findById(req.params.recipeId)
-  .then(recipe => {
-    res.send(recipe);
-  })
-  .catch(error => {
-    return res.status(500).send(error);
-  });
+    .then(recipe => {
+      res.send(recipe);
+    })
+    .catch(error => {
+      return res.status(500).send(error);
+    });
 }
 
 //PUT recipe by ID
