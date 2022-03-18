@@ -25,8 +25,9 @@
  *              type: number
  *              desc: Total time prep & cook
  *          ingredient_list:
- *              type: Schema.Types.ObjectId
- *              desc: a list of ingredients
+ *              type: array
+ *              items: 
+ *                type: string
  *              individual_ingredient:
  *                  qty: number
  *                  measurement: string

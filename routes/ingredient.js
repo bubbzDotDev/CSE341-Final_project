@@ -3,10 +3,10 @@ const express = require('express');
 //     body
 // } = require('express-validator/check');
 const {
-    body
+  body
 } = require("express-validator");
 
-const userController = require('../controllers/user');
+const ingredientController = require('../controllers/ingredient');
 
 const router = express.Router();
 
@@ -20,11 +20,11 @@ const router = express.Router();
 
 
 
-//GET all users
-// router.get('/users', userController.getUsers);
+//GET all ingredients
+router.get('/ingredient', ingredientController.getIngredient);
 
 //POST add user
-router.post('/add-user', userController.postAddUser);
+router.post('/add-ingredient', ingredientController.postAddIngredient);
 
 //GET user by ID
 // router.get('/users/:userId', userController.getUserById);
