@@ -1,0 +1,66 @@
+Dependencies Installed:
+swagger-jsdoc 
+swagger-ui-express
+connect-mongodb-session
+
+When you npm start, go to http://localhost:3000/api-docs/ to view Swagger ui
+
+
+Swagger documentation is in /swagger directory:
+-uses a multi-line comment with the @swagger to start. 
+-Adds API end points that can be used and tested in the Swagger UI on localhost
+-These endpoints are based on the recipe.json & recipe/routes previously created
+
+
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Recipe:
+ *      type: object
+ *      required:
+ *          -title
+ *          -serving
+ *          -cook_time
+ *          -directions
+ *      properties:
+ *          title:
+ *              type: string
+ *              desc: The Recipe Title
+ *          category:
+ *              type: Schema.Types.ObjectId
+ *              desc: What type of dish?
+ *          serving:
+ *              type: number
+ *              desc: How many the recipe serves
+ *          cook_time:
+ *              type: number
+ *              desc: Total time prep & cook
+ *          ingredient_list:
+ *              type: Schema.Types.ObjectId
+ *              desc: a list of ingredients
+ *              individual_ingredient:
+ *                  qty: number
+ *                  measurement: string
+ *                  ingredient_item: string
+ *                  notes: string
+ *          directions:
+ *              type: string
+ *          rating:
+ *              type: number
+ *          creator:
+ *              type: string
+ *              description: The Recipe Author
+ *          example:
+ *              title: Chocolate Chip Cookies
+ *              category: dessert
+ *              serving: 24
+ *              cook_time: 1 hour
+ *              ingredient_list: flour, egg, butter, baking soda, vanilla, brown sugar, chocolate chips
+ *              directions: Mix all ingredients together until well blended, drop by tablespoonfuls, bake @350 for 10-12 minutes
+ *              rating: 5
+ *              creator: Grandma Patsy
+ * 
+ */
+
+
