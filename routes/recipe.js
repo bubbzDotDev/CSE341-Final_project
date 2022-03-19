@@ -1,12 +1,10 @@
 const express = require('express');
+
+
 const router = express.Router();
 const recipeController = require('../controllers/recipe');
 
-// Gets a failure with deprecated warning because this says /check
-// const { body } = require('express-validator/check');
-const {
-    body
-} = require("express-validator");
+const { body } = require("express-validator");
 
 /**
  * Currently the POST route is working, and successfully adding recipes to the database. There is a seed of sample recipes in mongoDB that can be used for testing. 
@@ -29,5 +27,12 @@ router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
 //DELETE recipe
 // router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
 
+// PUT request to allow editing on a recipe.
+// router.put(
+//     'admin/recipe/:recipeId', recipeController.updateRecipe
+// );
+//DELETE recipe
+
+router.delete('/recipes/:recipeId', recipeController.deleteRecipe);
 
 module.exports = router;

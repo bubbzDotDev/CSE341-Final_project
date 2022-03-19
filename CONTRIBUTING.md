@@ -30,10 +30,11 @@
 
 1. At any time, use `git status` for hints on what needs to be done next.
 
-### Pushing to dev 
+### Pushing to your remote branch 
 (Don't forget to pull first)
 
-1. Set an upstream branch before trying to push in the next step: `git push --set-upstream origin [branch name]`
+1. Set an upstream branch before trying to push in the next step: 
+`git push --set-upstream origin [branch name]` (This only needs to be done once per new branch)
 
 1. Finally, run `git push` to send your work to the remote repository. 
 
@@ -59,7 +60,7 @@
 
 1. When you receive the following message: `Pull request successfully merged and closed`, you can safely delete the remote feature branch with the button to the right.
 
-1. To delete the branch locally, switch to `dev` and run `git branch -d [branch name]` and then repeat steps starting at step 3 or 5 to start your next feature!
+1. To delete the branch locally, switch to `dev` and run `git branch -d [branch name]` and then repeat steps to create a branch for your next feature!
 
 ### More help
 
