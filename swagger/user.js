@@ -49,18 +49,6 @@
  *   description: Registered user accounts
  */
 
-
-//GET all users
-/**
- * @swagger
- * /users:
- *   get:
- *     summary: 
- *     tags: [Users]
- */
-
-
-
 //POST create new user
 /**
  * @swagger
@@ -96,8 +84,25 @@
  * @swagger
  * /users/{id}:
  *   get:
- *     summary: 
+ *     summary: Get a user by id
  *     tags: [Users]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID of the user to get
+ *        example: 6230cb4f836d17a048a057c9 (Han Solo)
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *       500:
+ *          description: Server Error
  */
 
 //PUT user by id
@@ -108,7 +113,6 @@
  *      summary: 
  *      tags: [Users]
  */
-
 
 //DELETE user by id
 /**
