@@ -10,6 +10,10 @@ const userController = require('../controllers/user');
 
 const router = express.Router();
 
+// // PUT request to allow editing on a user profile.
+// router.put(
+//     'userEdit/:userId', userController.updateUser
+// );
 
 /**
  * Currently the POST route is working, and successfully adding users to the database. There is a seed of sample recipes in mongoDB that can be used for testing. 
@@ -33,7 +37,7 @@ router.post('/add-user', userController.postAddUser);
 // router.put('/edit-user/:userId', userController.putUpdateUser);
 
 //DELETE recipe
-// router.delete('/delete-user/:userId', userController.deleteUser);
+router.delete('/users/:userId', userController.deleteUser);
 
 
 module.exports = router;

@@ -1,4 +1,8 @@
-const Recipe = require('../models/recipe');
+const Recipe = require('../models/recipe')
+//const isAuth = require('../middleware/is-auth')
+
+
+
 const {
   validationResult
 } = require('express-validator/check');
@@ -69,3 +73,30 @@ exports.getRecipeById = (req, res, next) => {
 //PUT recipe by ID
 
 //DELETE recipe by ID
+exports.deleteRecipe = (req, res, next) => {
+  //get recipie id, delete recipe,
+  Recipe.findById(req.params.recipeId)
+  .then(recipe => {
+      if (!recipe) {
+          const error = new Error ('Could not find recipe.');
+          console.log ("no recipe found")
+          error.statusCode = 404;
+          throw error;
+      }
+      //Validate user ?
+
+      return Recipe.findByIdAndRemove(req.params.recipeId);
+
+  })
+  .then(result => {
+      console.log(result);
+      res.status(200).json({message: 'Deleted recipe. '});
+  })
+  .catch(err => {
+      if (!err.statusCode) {
+          err.statusCode = 500;
+      }
+      next(err);
+  });
+  
+};
