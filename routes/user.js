@@ -11,7 +11,7 @@ const router = express.Router();
 // );
 
 /**
- * Currently the POST route is working, and successfully adding users to the database. There is a seed of sample recipes in mongoDB that can be used for testing. 
+ * There is a seed of sample recipes in mongoDB that can be used for testing. 
  * 
  * Only uncomment your route when you have your controller working/during testing.
  */
