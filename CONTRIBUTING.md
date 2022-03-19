@@ -30,7 +30,7 @@
 
 1. At any time, use `git status` for hints on what needs to be done next.
 
-### Pushing to your branch 
+### Pushing to your remote branch 
 (Don't forget to pull first)
 
 1. Set an upstream branch before trying to push in the next step: 
