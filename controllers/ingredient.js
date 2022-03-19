@@ -1,7 +1,5 @@
 const Ingredient = require('../models/ingredient');
-const {
-  validationResult
-} = require('express-validator/check');
+const { validationResult } = require('express-validator');
 
 /**
  * Added comments for each controller export to be placed. 

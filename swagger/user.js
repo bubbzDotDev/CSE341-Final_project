@@ -100,7 +100,7 @@
  *     tags: [Users]
  */
 
-//PUT recipe by id
+//PUT user by id
 /**
  * @swagger
  * /users:
@@ -110,7 +110,7 @@
  */
 
 
-//DELETE recipe by id
+//DELETE user by id
 /**
  * @swagger
  * /users:
