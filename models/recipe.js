@@ -31,7 +31,7 @@ const recipeSchema = new Schema({
     rating: {
         type: Number
     },
-    userId: {
+    creator: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
