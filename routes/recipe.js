@@ -21,8 +21,8 @@ router.post('/add-recipe', recipeController.postAddRecipe);
 //GET recipe by ID
 router.get('/recipes/:recipeId', recipeController.getRecipeById);
 
-//PUT update recipe
-// router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
+//PUT update recipe by ID
+router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
 
 //DELETE recipe
 // router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);

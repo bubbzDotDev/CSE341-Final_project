@@ -48,8 +48,8 @@ Swagger documentation is in /swagger directory:
  *              type: string
  *          rating:
  *              type: number
- *          creator:
- *              type: string
+ *          userId:
+ *              type: Schema.Types.ObjectId
  *              description: The Recipe Author
  *          example:
  *              title: Chocolate Chip Cookies
@@ -59,7 +59,7 @@ Swagger documentation is in /swagger directory:
  *              ingredient_list: flour, egg, butter, baking soda, vanilla, brown sugar, chocolate chips
  *              directions: Mix all ingredients together until well blended, drop by tablespoonfuls, bake @350 for 10-12 minutes
  *              rating: 5
- *              creator: Grandma Patsy
+ *              userId: 623295e375fc75e0c6f74f0a
  * 
  */
 

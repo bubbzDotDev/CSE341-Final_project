@@ -140,9 +140,45 @@
 //PUT recipe by id
 /**
  * @swagger
- * /recipes:
+ * /edit-recipe/{id}:
  *    put:
- *      tags: [Recipes]
+ *     summary: Update a recipe by id
+ *     tags: [Recipes]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Numeric ID of the recipe to update
+ *        example: 622c03ea692c38732a8ec5f5 # Chocolate Moose
+        - in: header
+          name: userID
+          schema:
+            type: string
+            format: uuid
+          required: true
+ *     requestBody:
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *                properties:
+ *                      callbackUrl: https://localhost:3000/
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *       500:
+ *          description: Server Error
  */
 
 

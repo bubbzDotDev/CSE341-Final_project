@@ -69,6 +69,45 @@ exports.getRecipeById = (req, res, next) => {
 }
 
 //PUT recipe by ID
+exports.putUpdateRecipe = (req, res, next) => {
+  const recipeID = req.params.recipeId;
+  const title = req.body.title;
+  const serving = req.body.serving;
+  const cook_time = req.body.cook_time;
+  const directions = req.body.directions;
+  const rating = req.body.rating;
+  //console.log(recipeID);
+
+  Recipe.findById(recipeID)
+  .then(recipe => {
+    if (!recipe) {
+      const error = new Error('Could not find recipe');
+      error.statusCode = 404;
+      throw error;
+    }
+    if (recipe.creator.toString() !== req.userID) {
+      const error = new Error('User not authorized');
+      error.statusCode = 403;
+      throw error;
+    }
+    recipe.title = title;
+    recipe.serving = serving;
+    recipe.cook_time = cook_time;
+    recipe.directions = directions;
+    recipe.rating = rating;
+
+    return recipe.save();
+  })
+  .then(result => {
+    res.status(200).send(result);
+  })
+  .catch(error => {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  })
+};
 
 //DELETE recipe by ID
 exports.deleteRecipe = (req, res, next) => {
