@@ -20,10 +20,10 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredient_list: { //This may need to be a nested [] so the end user can loop through the whole list?
+    ingredient_list: [{ //This may need to be a nested [] so the end user can loop through the whole list?
         type: Schema.Types.ObjectId,
         ref: 'Ingredient'
-    },
+    }],
     directions: {
         type: String,
         required: true

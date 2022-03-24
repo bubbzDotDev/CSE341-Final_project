@@ -28,9 +28,6 @@
  *          password:
  *              type: string
  *              desc: Password
- *          recipes:
- *              type: Schema.Types.ObjectId
- *              desc: Recipes from this contributor
  *          example:
  *              firstName: Cookie
  *              lastName: Monster

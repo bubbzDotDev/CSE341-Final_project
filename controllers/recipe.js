@@ -33,9 +33,11 @@ exports.postAddRecipe = (req, res, next) => {
   const ingredient_list = req.body.ingredient_list;
   const directions = req.body.directions;
   const rating = req.body.rating;
-  const creator = mongoose.Types.ObjectId(req.body.creator);
+  const creator = req.header('creator');
+  console.log(creator);
 
   let ingredientObjArray = ingredient_list.map(s => mongoose.Types.ObjectId(s));
+  //console.log(ingredientObjArray);
 
   const recipe = new Recipe({
     title: title,
@@ -76,7 +78,8 @@ exports.putUpdateRecipe = (req, res, next) => {
   const cook_time = req.body.cook_time;
   const directions = req.body.directions;
   const rating = req.body.rating;
-  //console.log(recipeID);
+  const creator = req.header('creator');
+  console.log(creator);
 
   Recipe.findById(recipeID)
   .then(recipe => {
@@ -85,7 +88,11 @@ exports.putUpdateRecipe = (req, res, next) => {
       error.statusCode = 404;
       throw error;
     }
-    if (recipe.creator.toString() !== req.userID) {
+
+    console.log(recipe.creator.toString());
+    console.log(creator);
+
+    if (recipe.creator.toString() !== creator) {
       const error = new Error('User not authorized');
       error.statusCode = 403;
       throw error;

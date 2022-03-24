@@ -37,9 +37,6 @@
  *              type: string
  *          rating:
  *              type: number
- *          creator:
- *              type: string
- *              description: The Recipe Author
  *          example:
  *              title: Chocolate Chip Cookies
  *              category: dessert
@@ -88,6 +85,12 @@
  *   post:
  *     summary: Create a new recipe
  *     tags: [Recipes]
+ *     parameters:
+ *      - in: header
+ *        name: creator
+ *        schema:
+ *          type: string
+ *        required: true
  *     requestBody:
  *          content: 
  *            application/json:
@@ -153,10 +156,9 @@
  *        description: Numeric ID of the recipe to update
  *        example: 622c03ea692c38732a8ec5f5 # Chocolate Moose
  *      - in: header
- *        name: userID
+ *        name: creator
  *        schema:
  *          type: string
- *          format: uuid
  *        required: true
  *     requestBody:
  *          content: 

@@ -64,3 +64,6 @@ Swagger documentation is in /swagger directory:
  */
 
 
+ *          recipes:
+ *              type: Schema.Types.ObjectId
+ *              desc: Recipes from this contributor
