@@ -56,5 +56,38 @@ exports.getIngredientById = (req, res, next) => {
 
 
 //PUT recipe by ID
+exports.putIngredientById = (req, res, next) => {
+  const qty = req.body.qty;
+  const measurement = req.body.measurement;
+  const item = req.body.item;
+  const notes = req.body.notes;
+  const ingredientId = req.params.ingredientId;
+  console.log(ingredientId);
+
+  Ingredient.findById(ingredientId)
+  .then(ingredient => {
+    if (!ingredient) {
+      const error = new Error('Could not find ingredient');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    ingredient.qty = qty;
+    ingredient.measurement = measurement;
+    ingredient.item = item;
+    ingredient.notes = notes;
+
+    return ingredient.save();
+  })
+  .then(result => {
+    res.status(200).send(result);
+  })
+  .catch(error => {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  })
+};
 
 //DELETE recipe by ID

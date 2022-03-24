@@ -28,9 +28,6 @@
  *          password:
  *              type: string
  *              desc: Password
- *          recipes:
- *              type: Schema.Types.ObjectId
- *              desc: Recipes from this contributor
  *          example:
  *              firstName: Cookie
  *              lastName: Monster
@@ -108,10 +105,39 @@
 //PUT user by id
 /**
  * @swagger
- * /users:
+ * /edit-user/{userId}:
  *    put:
- *      summary: 
- *      tags: [Users]
+ *     summary: Update a user by id
+ *     tags: [Users]
+ *     parameters:
+ *      - in: path
+ *        name: userId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Numeric ID of the user to update
+ *        example: 623bd0b9ba35e5d11659121f # Bobba Fett
+ *     requestBody:
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ *                properties:
+ *                      callbackUrl: https://localhost:3000/
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ *       500:
+ *          description: Server Error
  */
 
 //DELETE user by id
