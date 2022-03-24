@@ -152,12 +152,12 @@
  *        required: true
  *        description: Numeric ID of the recipe to update
  *        example: 622c03ea692c38732a8ec5f5 # Chocolate Moose
-        - in: header
-          name: userID
-          schema:
-            type: string
-            format: uuid
-          required: true
+ *      - in: header
+ *        name: userID
+ *        schema:
+ *          type: string
+ *          format: uuid
+ *        required: true
  *     requestBody:
  *          content: 
  *            application/json:
