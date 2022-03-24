@@ -23,7 +23,7 @@ router.post('/add-user', userController.postAddUser);
 router.get('/users/:userId', userController.getUserById);
 
 //PUT update user
-// router.put('/edit-user/:userId', userController.putUpdateUser);
+router.put('/edit-user/:userId', userController.putUpdateUser);
 
 //DELETE recipe
 router.delete('/users/:userId', userController.deleteUser);

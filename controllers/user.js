@@ -45,6 +45,41 @@ exports.getUserById = (req, res, next) => {
 }
 
 //PUT user by ID
+exports.putUpdateUser = (req, res, next) => {
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const username = req.body.username;
+  const password = req.body.password;
+  const userId = req.params.userId;
+  console.log(userId);
+
+  User.findById(userId)
+  .then(user => {
+    if (!user) {
+      const error = new Error('Could not find user');
+      error.statusCode = 404;
+      throw error;
+    }
+
+    user.firstName = firstName;
+    user.lastName = lastName;
+    user.email = email;
+    user.username = username;
+    user.password = password;
+
+    return user.save();
+  })
+  .then(result => {
+    res.status(200).send(result);
+  })
+  .catch(error => {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  })
+};
 
 //DELETE user by ID
 

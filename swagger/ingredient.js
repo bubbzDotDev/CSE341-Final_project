@@ -40,7 +40,7 @@
  */
 
 
-//GET all users
+//GET all ingredients
 /**
  * @swagger
  * /ingredient:
@@ -60,7 +60,7 @@
 
 
 
-//POST create new user
+//POST create new ingredient
 /**
  * @swagger
  * /add-ingredient:
@@ -90,26 +90,72 @@
  *          description: Server Error
  */
 
-//GET user by ID
+//GET ingredient by ID
 /**
  * @swagger
- * /ingredient/{id}:
+ * /ingredient/{ingredientId}:
  *   get:
- *     summary: 
+ *     summary: Get a ingredient by id
  *     tags: [Ingredients]
+ *     parameters:
+ *      - in: path
+ *        name: ingredientId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID of the ingredient to get
+ *        example: 623bca89f29f29269342e2d9 # gary ingredient
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Ingredient'
+ *       500:
+ *          description: Server Error
  */
 
-//PUT recipe by id
+//PUT ingredient by id
 /**
  * @swagger
- * /ingredients:
+ * /edit-ingredient/{ingredientId}:
  *    put:
- *      summary: 
- *      tags: [Ingredients]
+ *     summary: Update an ingredient by id
+ *     tags: [Ingredients]
+ *     parameters:
+ *      - in: path
+ *        name: ingredientId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Numeric ID of the ingredient to update
+ *        example: 623bca89f29f29269342e2d9 # gary ingredient
+ *     requestBody:
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Ingredient'
+ *                properties:
+ *                      callbackUrl: https://localhost:3000/
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Ingredient'
+ *       500:
+ *          description: Server Error
  */
 
 
-//DELETE recipe by id
+//DELETE ingredient by id
 /**
  * @swagger
  * /ingredients:
