@@ -158,8 +158,25 @@
 //DELETE ingredient by id
 /**
  * @swagger
- * /ingredients:
- *    delete:
- *      summary: 
- *      tags: [Ingredients]
+ * /delete-ingredient/{ingredientId}:
+ *   delete:
+ *     summary: Delete an ingredient by id
+ *     tags: [Ingredients]
+ *     parameters:
+ *      - in: path
+ *        name: ingredientId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID of the ingredient to delete
+ *        example: ID_GOES_HERE
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Ingredient'
+ *       500:
+ *          description: Server Error
  */

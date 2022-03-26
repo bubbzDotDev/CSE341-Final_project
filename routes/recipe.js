@@ -25,14 +25,6 @@ router.get('/recipes/:recipeId', recipeController.getRecipeById);
 router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
 
 //DELETE recipe
-// router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
-
-// PUT request to allow editing on a recipe.
-// router.put(
-//     'admin/recipe/:recipeId', recipeController.updateRecipe
-// );
-//DELETE recipe
-
-router.delete('/recipes/:recipeId', recipeController.deleteRecipe);
+router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
 
 module.exports = router;
