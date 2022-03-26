@@ -187,7 +187,30 @@
 //DELETE recipe by id
 /**
  * @swagger
- * /recipes:
+ * /delete-recipe/{id}:
  *    delete:
- *      tags: [Recipes]
+ *     summary: Delete a recipe by id
+ *     tags: [Recipes]
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: Numeric ID of the recipe to delete
+ *        example: ID_GOES_HERE
+ *      - in: header
+ *        name: creator
+ *        schema:
+ *          type: string
+ *        required: true
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *       500:
+ *          description: Server Error
  */

@@ -25,7 +25,7 @@ router.get('/users/:userId', userController.getUserById);
 //PUT update user
 router.put('/edit-user/:userId', userController.putUpdateUser);
 
-//DELETE recipe
-router.delete('/users/:userId', userController.deleteUser);
+//DELETE user
+router.delete('/delete-user/:userId', userController.deleteUser);
 
 module.exports = router;

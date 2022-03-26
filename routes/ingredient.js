@@ -19,7 +19,6 @@ router.get('/ingredient/:ingredientId', ingredientController.getIngredientById);
 router.put('/edit-ingredient/:ingredientId', ingredientController.putIngredientById);
 
 //DELETE ingredient
-// router.delete('/delete-ingredient/:ingredientId', ingredientController.deleteIngredient);
-
+router.delete('/delete-ingredient/:ingredientId', ingredientController.deleteIngredientById);
 
 module.exports = router;

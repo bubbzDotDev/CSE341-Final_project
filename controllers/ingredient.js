@@ -90,4 +90,27 @@ exports.putIngredientById = (req, res, next) => {
   })
 };
 
-//DELETE recipe by ID
+//DELETE ingredient by ID
+exports.deleteIngredientById = (req, res, next) => {
+  Ingredient.findById(req.params.ingredientId)
+    .then(ingredient => {
+      // res.send(ingredient);
+      if (!ingredient) {
+        const error = new Error ('Could not find ingredient.');
+        console.log ("No ingredient found")
+        error.statusCode = 404;
+        throw error;
+    }
+    return Ingredient.findByIdAndRemove(req.params.ingredientId);
+    })
+    .then(result => {
+      console.log(result);
+      res.status(200).json({message: 'Deleted ingredient. '});
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+          err.statusCode = 500;
+      }
+      next(err);
+  });
+}
