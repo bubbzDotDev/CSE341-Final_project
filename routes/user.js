@@ -28,4 +28,6 @@ router.put('/edit-user/:userId', userController.putUpdateUser);
 //DELETE user
 router.delete('/delete-user/:userId', userController.deleteUser);
 
+router.post('/login', userController.login);
+
 module.exports = router;
