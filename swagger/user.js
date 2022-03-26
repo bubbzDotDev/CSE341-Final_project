@@ -38,6 +38,29 @@
  * 
  */
 
+/**
+ * @swagger
+ * components:
+ *  schemas:
+ *    Login-User:
+ *      type: object
+ *      required:
+ *        -email
+ *        -password
+ *      properties:
+ *          email:
+ *              type: string
+ *              desc: User's email address
+ *          password:
+ *              type: string
+ *              desc: Password
+ *          example:
+ *              email: blue_fur@sesamestreet.com
+ *              password: monsterchoc
+ * 
+ */
+
+
 //sets up header on Swagger UI
 /**
  * @swagger
@@ -169,24 +192,23 @@
 //POST login user by email password
 /**
  * @swagger
- * /login
+ * /login:
  *    post:
  *     summary: Logs in existing user
- * tags: [Users]
+ *     tags: [Users]
  *     requestBody:
  *          content: 
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/components/schemas/Login-User'
  *                properties:
  *                      callbackUrl: https://localhost:3000/
  *                      type: string
  *                      format: uri
- *                      example: https://myserver.com/send/callback/here
  *                required:
  *                  -callbackUrl
  *     responses:
- *      200:
+ *       200:
  *          description: Success message 
  *          contents:
  *            application/json:
