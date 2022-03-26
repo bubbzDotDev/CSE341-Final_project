@@ -1,4 +1,4 @@
-//These multi-line comments are what feed the Swagger-jsdoc and populate the Swagger UI with the GET/POST/PUT/DELETE
+//These multi-line comments are what feed the Swagger-jsdoc and populate the Swagger UI with the GET/POST/PUT/DELETE/Login
 
 /**
  * @swagger
@@ -164,4 +164,38 @@
  *                $ref: '#/components/schemas/Recipe'
  *       500:
  *          description: Server Error
+ */
+
+//POST login user by email password
+/**
+ * @swagger
+ * /login
+ *    post:
+ *     summary: Logs in existing user
+ * tags: [Users]
+ *     requestBody:
+ *          content: 
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ *                properties:
+ *                      callbackUrl: https://localhost:3000/
+ *                      type: string
+ *                      format: uri
+ *                      example: https://myserver.com/send/callback/here
+ *                required:
+ *                  -callbackUrl
+ *     responses:
+ *      200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'      
+ *       401:
+ *          description: Unable to authenticate 
+ *          
+ *       500:
+ *          description: Server Error
+ *    
  */

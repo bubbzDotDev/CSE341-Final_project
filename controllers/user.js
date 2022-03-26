@@ -125,7 +125,7 @@ exports.deleteUser = (req, res, next) => {
     });
 
 };
-//Login user with email password
+//POST login User
 exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;

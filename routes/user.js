@@ -29,7 +29,8 @@ router.put('/edit-user/:userId', isAuth, userController.putUpdateUser);
 
 //DELETE user
 router.delete('/delete-user/:userId',isAuth,  userController.deleteUser);
-//Login as a user
+
+//POST login user
 router.post('/login', userController.login);
 
 module.exports = router;
