@@ -6,6 +6,8 @@ const recipeController = require('../controllers/recipe');
 
 const { body } = require("express-validator");
 
+const isAuth = require('../middleware/is-auth');
+
 /**
  * Currently the POST route is working, and successfully adding recipes to the database. There is a seed of sample recipes in mongoDB that can be used for testing. 
  * 
@@ -22,9 +24,9 @@ router.post('/add-recipe', recipeController.postAddRecipe);
 router.get('/recipes/:recipeId', recipeController.getRecipeById);
 
 //PUT update recipe by ID
-router.put('/edit-recipe/:recipeId', recipeController.putUpdateRecipe);
+router.put('/edit-recipe/:recipeId', isAuth, recipeController.putUpdateRecipe);
 
 //DELETE recipe
-router.delete('/delete-recipe/:recipeId', recipeController.deleteRecipe);
+router.delete('/delete-recipe/:recipeId', isAuth, recipeController.deleteRecipe);
 
 module.exports = router;
