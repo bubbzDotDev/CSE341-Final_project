@@ -143,8 +143,25 @@
 //DELETE user by id
 /**
  * @swagger
- * /users:
+ * /delete-user/{userId}:
  *    delete:
- *      summary: 
- *      tags: [Users]
+ *     summary: Delete user by ID
+ *     tags: [Users]
+ *     parameters:
+ *      - in: path
+ *        name: userId
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: ID of the user to get
+ *        example: ID_GOES_HERE
+ *     responses:
+ *       200:
+ *          description: Success message 
+ *          contents:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/Recipe'
+ *       500:
+ *          description: Server Error
  */
