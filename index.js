@@ -1,6 +1,6 @@
 require('dotenv').config();
-//db admin uname: grandmaAdmin
-//db admin password: OpbSOoma8wBDNTn1
+const cors = require('cors');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -89,6 +89,13 @@ app.use((error, req, res, next) => {
   const data = error.data;
   res.status(status).json({ message: message, data: data });
 });
+
+// CORS
+const corsOptions = {
+  origin: process.env.HEROKU_URL,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 mongoose
   .connect(MONGODB_URI)
