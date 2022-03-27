@@ -1,5 +1,6 @@
-//db admin uname: grandmaAdmin
-//db admin password: OpbSOoma8wBDNTn1
+require('dotenv').config();
+// const cors = require('cors');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
@@ -8,6 +9,7 @@ const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
+const csrf = require('csurf');
 
 // Swagger API requires
 const swaggerUI = require("swagger-ui-express")
@@ -28,6 +30,7 @@ const db = new MongoDB({
   recipes: [],
   users: []
 });
+
 
 //Swagger set up
 const options = {
@@ -70,6 +73,10 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+// CSRF
+const csrfProtection = csrf();
+app.use(csrfProtection);
+
 // Using our routes as defined.
 app.use(recipeRoutes);
 app.use(userRoutes);
@@ -82,6 +89,13 @@ app.use((error, req, res, next) => {
   const data = error.data;
   res.status(status).json({ message: message, data: data });
 });
+
+// CORS
+// const corsOptions = {
+//   origin: process.env.HEROKU_URL,
+//   optionsSuccessStatus: 200
+// };
+// app.use(cors(corsOptions));
 
 mongoose
   .connect(MONGODB_URI)

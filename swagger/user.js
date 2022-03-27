@@ -120,7 +120,7 @@
  *          contents:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Recipe'
+ *                $ref: '#/components/schemas/User'
  *       500:
  *          description: Server Error
  */
@@ -184,7 +184,7 @@
  *          contents:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/Recipe'
+ *                $ref: '#/components/schemas/User'
  *       500:
  *          description: Server Error
  */

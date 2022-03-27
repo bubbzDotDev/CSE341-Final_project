@@ -53,7 +53,7 @@
  *            contents:
  *              application / json:
  *                schema:
- *                  $ref: '#/components/schemas/Recipe' 
+ *                  $ref: '#/components/schemas/Ingredient' 
  *        500:
  *            description: Server Error
  */
