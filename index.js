@@ -1,3 +1,4 @@
+require('dotenv').config();
 //db admin uname: grandmaAdmin
 //db admin password: OpbSOoma8wBDNTn1
 const express = require('express');
