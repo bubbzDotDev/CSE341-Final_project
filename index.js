@@ -1,5 +1,5 @@
 require('dotenv').config();
-const cors = require('cors');
+// const cors = require('cors');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -91,11 +91,11 @@ app.use((error, req, res, next) => {
 });
 
 // CORS
-const corsOptions = {
-  origin: process.env.HEROKU_URL,
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: process.env.HEROKU_URL,
+//   optionsSuccessStatus: 200
+// };
+// app.use(cors(corsOptions));
 
 mongoose
   .connect(MONGODB_URI)
