@@ -31,7 +31,6 @@ const db = new MongoDB({
   users: []
 });
 
-const csrfProtection = csrf();
 
 //Swagger set up
 const options = {
@@ -74,6 +73,8 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+// CSRF
+const csrfProtection = csrf();
 app.use(csrfProtection);
 
 // Using our routes as defined.
