@@ -9,6 +9,7 @@ const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
+const csrf = require('csurf');
 
 // Swagger API requires
 const swaggerUI = require("swagger-ui-express")
@@ -29,6 +30,8 @@ const db = new MongoDB({
   recipes: [],
   users: []
 });
+
+const csrfProtection = csrf();
 
 //Swagger set up
 const options = {
@@ -70,6 +73,8 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+
+app.use(csrfProtection);
 
 // Using our routes as defined.
 app.use(recipeRoutes);
