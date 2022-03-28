@@ -78,9 +78,9 @@ const csrfProtection = csrf();
 app.use(csrfProtection);
 
 // Using our routes as defined.
-app.use(recipeRoutes);
-app.use(userRoutes);
-app.use(ingredientRoutes);
+app.use('/recipes', recipeRoutes);
+app.use('/user', userRoutes);
+app.use('/ingredients', ingredientRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);

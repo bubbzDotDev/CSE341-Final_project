@@ -72,7 +72,7 @@
 //POST create new user
 /**
  * @swagger
- * /add-user:
+ * /user/add-user:
  *   post:
  *     summary: Create a new user account
  *     tags: [Users]
@@ -102,7 +102,7 @@
 //GET user by ID
 /**
  * @swagger
- * /users/{id}:
+ * /user/users/{id}:
  *   get:
  *     summary: Get a user by id
  *     tags: [Users]
@@ -128,7 +128,7 @@
 //PUT user by id
 /**
  * @swagger
- * /edit-user/{userId}:
+ * /user/edit-user/{userId}:
  *    put:
  *     summary: Update a user by id
  *     tags: [Users]
@@ -166,7 +166,7 @@
 //DELETE user by id
 /**
  * @swagger
- * /delete-user/{userId}:
+ * /user/delete-user/{userId}:
  *    delete:
  *     summary: Delete user by ID
  *     tags: [Users]
@@ -192,7 +192,7 @@
 //POST login user by email password
 /**
  * @swagger
- * /login:
+ * /user/login:
  *    post:
  *     summary: Logs in existing user
  *     tags: [Users]

@@ -19,7 +19,6 @@ router.get('/recipes', recipeController.getRecipes);
 
 //POST add recipe
 router.post('/add-recipe', 
-isAuth,
     [
         body('title')
             .trim()
