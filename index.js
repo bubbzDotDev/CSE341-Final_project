@@ -1,5 +1,5 @@
 require('dotenv').config();
-// const cors = require('cors');
+const cors = require('cors');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -19,8 +19,7 @@ const recipeRoutes = require('./routes/recipe');
 const userRoutes = require('./routes/user');
 const ingredientRoutes = require('./routes/ingredient');
 
-const MONGODB_URI = 'mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
+const MONGODB_URI = process.env.MONGODB_URI;
 
 //updated from sessions to a list of recipes
 const db = new MongoDB({
@@ -95,11 +94,11 @@ app.use((error, req, res, next) => {
 });
 
 // CORS
-// const corsOptions = {
-//   origin: process.env.HEROKU_URL,
-//   optionsSuccessStatus: 200
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: 'http://localhost:3000' || process.env.HEROKU_URL,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 mongoose
   .connect(MONGODB_URI)
