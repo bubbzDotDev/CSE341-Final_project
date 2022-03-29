@@ -44,7 +44,7 @@ exports.postAddUser = (req, res, next) => {
       res.status(201).json({ message: 'User created!', userId: result._id });
       
     })
-    .catch(error => {
+    .catch(err => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
@@ -173,6 +173,9 @@ exports.login = (req, res, next) => {
       }, 'somesupersecretstring', {
         expiresIn: '1h'
       });
+
+      res.header('Authorization', 'Bearer '+ token);
+
       res.status(200).json({
         token: token,
         userId: loadedUser._id.toString()

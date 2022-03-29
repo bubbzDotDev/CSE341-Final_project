@@ -88,6 +88,11 @@
  *        schema:
  *          type: string
  *        required: true
+ *      - in: header
+ *        name: auth
+ *        description: an authorization header
+ *        required: true
+ *        type: string
  *     requestBody:
  *          content: 
  *            application/json:
