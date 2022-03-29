@@ -130,6 +130,8 @@
  * @swagger
  * /user/edit-user/{userId}:
  *    put:
+ *     security:
+ *      - bearerAuth: []
  *     summary: Update a user by id
  *     tags: [Users]
  *     parameters:
@@ -140,6 +142,11 @@
  *        required: true
  *        description: Numeric ID of the user to update
  *        example: 623bd0b9ba35e5d11659121f # Bobba Fett
+ *      - in: header
+ *        name: Authorization
+ *        schema:
+ *          type: string
+ *        required: true
  *     requestBody:
  *          content: 
  *            application/json:

@@ -15,9 +15,6 @@
  *          title:
  *              type: string
  *              desc: The Recipe Title
- *          category:
- *              type: Schema.Types.ObjectId
- *              desc: What type of dish?
  *          serving:
  *              type: number
  *              desc: How many the recipe serves

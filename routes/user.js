@@ -7,6 +7,8 @@ const router = express.Router();
 
 const isAuth = require('../middleware/is-auth');
 
+const User = require('../models/user');
+
 // // PUT request to allow editing on a user profile.
 // router.put(
 //     'userEdit/:userId', userController.updateUser
