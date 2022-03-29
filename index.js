@@ -95,7 +95,7 @@ app.use((error, req, res, next) => {
 
 // CORS
 const corsOptions = {
-  origin: 'http://localhost:3000' || process.env.HEROKU_URL,
+  origin: process.env.HOST_URL,
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
