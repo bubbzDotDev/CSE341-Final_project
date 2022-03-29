@@ -75,7 +75,7 @@ app.use(bodyParser.urlencoded({
 
 // CSRF
 const csrfProtection = csrf();
-app.use(csrfProtection);
+//app.use(csrfProtection);
 
 // Using our routes as defined.
 app.use(recipeRoutes);
