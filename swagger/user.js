@@ -143,10 +143,11 @@
  *        description: Numeric ID of the user to update
  *        example: 623bd0b9ba35e5d11659121f # Bobba Fett
  *      - in: header
- *        name: Authorization
+ *        name: auth
+ *        description: a JWT token header "Bearer -token-"
+ *        required: true
  *        schema:
  *          type: string
- *        required: true
  *     requestBody:
  *          content: 
  *            application/json:
@@ -185,6 +186,12 @@
  *        required: true
  *        description: ID of the user to get
  *        example: ID_GOES_HERE
+ *      - in: header
+ *        name: auth
+ *        description: a JWT token header "Bearer -token-"
+ *        required: true
+ *        schema:
+ *          type: string
  *     responses:
  *       200:
  *          description: Success message 

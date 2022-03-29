@@ -85,7 +85,7 @@
  *     parameters:
  *      - in: header
  *        name: auth
- *        description: a JWT token header "Bearer <token>"
+ *        description: a JWT token header "Bearer -token-"
  *        required: true
  *        schema:
  *          type: string
@@ -155,7 +155,7 @@
  *        example: 622c03ea692c38732a8ec5f5 # Chocolate Moose
  *      - in: header
  *        name: auth
- *        description: a JWT token header "Bearer <token>"
+ *        description: a JWT token header "Bearer -token-"
  *        required: true
  *        schema:
  *          type: string
@@ -200,7 +200,7 @@
  *        example: ID_GOES_HERE
  *      - in: header
  *        name: auth
- *        description: a JWT token header "Bearer <token>"
+ *        description: a JWT token header "Bearer -token-"
  *        required: true
  *        schema:
  *          type: string
