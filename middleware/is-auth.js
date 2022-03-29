@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
     const authHeader = req.get("auth");
     console.log(authHeader);
     if (!authHeader) {
-        const error = new Error('Not authenticated RIP.');
+        const error = new Error('Not authenticated (No auth header?).');
         error.statusCode = 401;
         throw error;
     }

@@ -92,7 +92,8 @@
  *        name: auth
  *        description: an authorization header
  *        required: true
- *        type: string
+ *        schema:
+ *          type: string
  *     requestBody:
  *          content: 
  *            application/json:
