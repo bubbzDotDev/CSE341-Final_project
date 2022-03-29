@@ -13,6 +13,14 @@ const jwt = require('jsonwebtoken');
 
 //POST user
 exports.postAddUser = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed.');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
+
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -58,6 +66,13 @@ exports.getUserById = (req, res, next) => {
 
 //PUT user by ID
 exports.putUpdateUser = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed.');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;

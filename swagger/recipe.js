@@ -15,9 +15,6 @@
  *          title:
  *              type: string
  *              desc: The Recipe Title
- *          category:
- *              type: Schema.Types.ObjectId
- *              desc: What type of dish?
  *          serving:
  *              type: number
  *              desc: How many the recipe serves
@@ -61,7 +58,7 @@
 //GET all recipes
 /**
  * @swagger
- * /recipes:
+ * /recipes/recipes:
  *   get:
  *     summary: Get all recipes
  *     tags: [Recipes]
@@ -81,7 +78,7 @@
 //POST create new recipe
 /**
  * @swagger
- * /add-recipe:
+ * /recipes/add-recipe:
  *   post:
  *     summary: Create a new recipe
  *     tags: [Recipes]
@@ -122,7 +119,7 @@
 //GET recipe by ID
 /**
  * @swagger
- * /recipes/{id}:
+ * /recipes/recipes/{id}:
  *   get:
  *     summary: Get a recipe by id
  *     tags: [Recipes]
@@ -148,7 +145,7 @@
 //PUT recipe by id
 /**
  * @swagger
- * /edit-recipe/{id}:
+ * /recipes/edit-recipe/{id}:
  *    put:
  *     summary: Update a recipe by id
  *     tags: [Recipes]
@@ -192,7 +189,7 @@
 //DELETE recipe by id
 /**
  * @swagger
- * /delete-recipe/{id}:
+ * /recipes/delete-recipe/{id}:
  *    delete:
  *     summary: Delete a recipe by id
  *     tags: [Recipes]

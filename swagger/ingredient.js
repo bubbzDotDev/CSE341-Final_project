@@ -43,7 +43,7 @@
 //GET all ingredients
 /**
  * @swagger
- * /ingredient:
+ * /ingredients/ingredient:
  *   get:
  *     summary: Get all Ingredients
  *     tags: [Ingredients]
@@ -63,7 +63,7 @@
 //POST create new ingredient
 /**
  * @swagger
- * /add-ingredient:
+ * /ingredients/add-ingredient:
  *   post:
  *     summary: Create a new ingredient
  *     tags: [Ingredients]
@@ -93,7 +93,7 @@
 //GET ingredient by ID
 /**
  * @swagger
- * /ingredient/{ingredientId}:
+ * /ingredients/ingredient/{ingredientId}:
  *   get:
  *     summary: Get a ingredient by id
  *     tags: [Ingredients]
@@ -119,7 +119,7 @@
 //PUT ingredient by id
 /**
  * @swagger
- * /edit-ingredient/{ingredientId}:
+ * /ingredients/edit-ingredient/{ingredientId}:
  *    put:
  *     summary: Update an ingredient by id
  *     tags: [Ingredients]
@@ -158,7 +158,7 @@
 //DELETE ingredient by id
 /**
  * @swagger
- * /delete-ingredient/{ingredientId}:
+ * /ingredients/delete-ingredient/{ingredientId}:
  *   delete:
  *     summary: Delete an ingredient by id
  *     tags: [Ingredients]
