@@ -9,7 +9,6 @@ const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
-// const csrf = require('csurf');
 
 // Swagger API requires
 const swaggerUI = require("swagger-ui-express");
@@ -81,10 +80,6 @@ app.db = db;
 //parse json body of the request
 app.use(express.json())
 app.use(bodyParser.json());
-
-// CSRF
-// const csrfProtection = csrf();
-// app.use(csrfProtection);
 
 // Using our routes as defined.
 app.use('/recipes', recipeRoutes);
