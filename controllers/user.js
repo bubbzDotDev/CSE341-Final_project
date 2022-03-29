@@ -66,6 +66,16 @@ exports.getUserById = (req, res, next) => {
 
 //PUT user by ID
 exports.putUpdateUser = (req, res, next) => {
+  const authUserId = req.userId;
+  const userId = req.params.userId;
+
+  //Authorize user
+  if (userId !== authUserId) {
+    const error = new Error('User not authorized');
+    error.statusCode = 403;
+    throw error;
+  }
+
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error('Validation failed.');
@@ -78,8 +88,6 @@ exports.putUpdateUser = (req, res, next) => {
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
-  const userId = req.params.userId;
-  console.log(userId);
 
 
   User.findById(userId)
@@ -89,14 +97,16 @@ exports.putUpdateUser = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-
-      user.firstName = firstName;
-      user.lastName = lastName;
-      user.email = email;
-      user.username = username;
-      user.password = password;
-
-      return user.save();
+      bcrypt  
+      .hash(password, 12)
+      .then(hashedPw => {
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        user.username = username;
+        user.password = hashedPw;
+        return user.save();
+      });
     })
     .then(result => {
       res.status(200).send(result);
@@ -112,6 +122,15 @@ exports.putUpdateUser = (req, res, next) => {
 //DELETE user by ID
 
 exports.deleteUser = (req, res, next) => {
+  const authUserId = req.userId;
+  const userId = req.params.userId;
+
+  //Authorize user
+  if (userId !== authUserId) {
+    const error = new Error('User not authorized');
+    error.statusCode = 403;
+    throw error;
+  }
 
   User.findById(req.params.userId)
     .then(user => {
@@ -169,7 +188,7 @@ exports.login = (req, res, next) => {
       }
       const token = jwt.sign({
         email: loadedUser.email,
-        userId: loadedUser._id.toString(),
+        userId: loadedUser._id.toString()
       }, 'somesupersecretstring', {
         expiresIn: '1h'
       });
