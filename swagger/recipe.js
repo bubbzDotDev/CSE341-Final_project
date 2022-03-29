@@ -84,13 +84,8 @@
  *     tags: [Recipes]
  *     parameters:
  *      - in: header
- *        name: creator
- *        schema:
- *          type: string
- *        required: true
- *      - in: header
  *        name: auth
- *        description: an authorization header
+ *        description: a JWT token header "Bearer <token>"
  *        required: true
  *        schema:
  *          type: string

@@ -33,7 +33,8 @@ exports.postAddRecipe = (req, res, next) => {
   const ingredient_list = req.body.ingredient_list;
   const directions = req.body.directions;
   const rating = req.body.rating;
-  const creator = req.header('creator');
+  //const creator = req.header('creator');
+  const creator = req.userId;
   //console.log(creator);
 
   let ingredientObjArray = ingredient_list.map(s => mongoose.Types.ObjectId(s));
