@@ -189,7 +189,7 @@ exports.login = (req, res, next) => {
       const token = jwt.sign({
         email: loadedUser.email,
         userId: loadedUser._id.toString()
-      }, 'somesupersecretstring', {
+      }, process.env.SECRET_STRING, {
         expiresIn: '1h'
       });
 

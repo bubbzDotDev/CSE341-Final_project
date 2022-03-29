@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
     const token = authHeader.split(' ')[1];
     let decodedToken;
     try {
-        decodedToken = jwt.verify(token, 'somesupersecretstring');
+        decodedToken = jwt.verify(token, process.env.SECRET_STRING);
     } catch (err) {
         err.statusCode = 500;
         throw err;
