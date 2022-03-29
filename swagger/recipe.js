@@ -154,10 +154,11 @@
  *        description: Numeric ID of the recipe to update
  *        example: 622c03ea692c38732a8ec5f5 # Chocolate Moose
  *      - in: header
- *        name: creator
+ *        name: auth
+ *        description: a JWT token header "Bearer <token>"
+ *        required: true
  *        schema:
  *          type: string
- *        required: true
  *     requestBody:
  *          content: 
  *            application/json:
@@ -198,10 +199,11 @@
  *        description: Numeric ID of the recipe to delete
  *        example: ID_GOES_HERE
  *      - in: header
- *        name: creator
+ *        name: auth
+ *        description: a JWT token header "Bearer <token>"
+ *        required: true
  *        schema:
  *          type: string
- *        required: true
  *     responses:
  *       200:
  *          description: Success message 
