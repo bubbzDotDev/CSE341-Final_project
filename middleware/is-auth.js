@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-    const token = req.get('Authorization').split(' ')[1];
+    const token = req.get('Authorization').split(' ')[1];  // req.get('Authorization') is undefined during testing -Chris
+    
     let decodedToken;
     try {
         decodedToken = jwt.verify(token, 'somesupersecretstring');

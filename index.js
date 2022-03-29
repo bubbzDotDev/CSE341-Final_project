@@ -9,12 +9,11 @@ const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const csrf = require('csurf');
+// const csrf = require('csurf');
 
 // Swagger API requires
-const swaggerUI = require("swagger-ui-express")
-const swaggerJsdoc = require("swagger-jsdoc")
-
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
 
 //routes
 const recipeRoutes = require('./routes/recipe');
@@ -31,11 +30,10 @@ const db = new MongoDB({
   users: []
 });
 
-
 //Swagger set up
 const options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: "3.0.1",
     info: {
       title: "Recipe API",
       version: "1.0.0",
@@ -43,14 +41,27 @@ const options = {
     },
     servers: [{
       url: "http://localhost:3000"
-    }]
+    }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          name: 'Authorization',
+        }
+      }
+    },
+    security: [{
+      bearerAuth: []
+    }],
   },
   apis: ["./swagger/*.js"]
 }
 // This tells Swagger-jsdoc where/how to parse the comments
-const specs = swaggerJsdoc(options)
+const specs = swaggerJsdoc(options);
 //specify specs to build UI & view api docs
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 // This allows us to make requests through the api.
@@ -69,18 +80,16 @@ app.db = db;
 
 //parse json body of the request
 app.use(express.json())
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
+app.use(bodyParser.json());
 
 // CSRF
-const csrfProtection = csrf();
-app.use(csrfProtection);
+// const csrfProtection = csrf();
+// app.use(csrfProtection);
 
 // Using our routes as defined.
-app.use(recipeRoutes);
-app.use(userRoutes);
-app.use(ingredientRoutes);
+app.use('/recipes', recipeRoutes);
+app.use('/user', userRoutes);
+app.use('/ingredients', ingredientRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
