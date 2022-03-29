@@ -1,5 +1,5 @@
 require('dotenv').config();
-// const cors = require('cors');
+const cors = require('cors');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,20 +9,17 @@ const MongoDB = require('connect-mongodb-session')(session);
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const csrf = require('csurf');
 
 // Swagger API requires
-const swaggerUI = require("swagger-ui-express")
-const swaggerJsdoc = require("swagger-jsdoc")
-
+const swaggerUI = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
 
 //routes
 const recipeRoutes = require('./routes/recipe');
 const userRoutes = require('./routes/user');
 const ingredientRoutes = require('./routes/ingredient');
 
-const MONGODB_URI = 'mongodb+srv://grandmaAdmin:OpbSOoma8wBDNTn1@cluster0.2be6m.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-
+const MONGODB_URI = process.env.MONGODB_URI;
 
 //updated from sessions to a list of recipes
 const db = new MongoDB({
@@ -31,11 +28,10 @@ const db = new MongoDB({
   users: []
 });
 
-
 //Swagger set up
 const options = {
   definition: {
-    openapi: "3.0.0",
+    openapi: "3.0.1",
     info: {
       title: "Recipe API",
       version: "1.0.0",
@@ -43,14 +39,27 @@ const options = {
     },
     servers: [{
       url: "http://localhost:3000"
-    }]
+    }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          name: 'Authorization',
+        }
+      }
+    },
+    security: [{
+      bearerAuth: []
+    }],
   },
   apis: ["./swagger/*.js"]
 }
 // This tells Swagger-jsdoc where/how to parse the comments
-const specs = swaggerJsdoc(options)
+const specs = swaggerJsdoc(options);
 //specify specs to build UI & view api docs
-app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs))
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 
 // This allows us to make requests through the api.
@@ -69,18 +78,12 @@ app.db = db;
 
 //parse json body of the request
 app.use(express.json())
-app.use(bodyParser.urlencoded({
-  extended: false
-}));
-
-// CSRF
-const csrfProtection = csrf();
-app.use(csrfProtection);
+app.use(bodyParser.json());
 
 // Using our routes as defined.
-app.use(recipeRoutes);
-app.use(userRoutes);
-app.use(ingredientRoutes);
+app.use('/recipes', recipeRoutes);
+app.use('/user', userRoutes);
+app.use('/ingredients', ingredientRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
@@ -91,11 +94,11 @@ app.use((error, req, res, next) => {
 });
 
 // CORS
-// const corsOptions = {
-//   origin: process.env.HEROKU_URL,
-//   optionsSuccessStatus: 200
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: process.env.HOST_URL,
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 mongoose
   .connect(MONGODB_URI)

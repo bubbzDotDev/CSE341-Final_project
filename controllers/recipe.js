@@ -33,7 +33,7 @@ exports.postAddRecipe = (req, res, next) => {
   const ingredient_list = req.body.ingredient_list;
   const directions = req.body.directions;
   const rating = req.body.rating;
-  const creator = req.header('creator');
+  const creator = req.userId;
   //console.log(creator);
 
   let ingredientObjArray = ingredient_list.map(s => mongoose.Types.ObjectId(s));
@@ -78,7 +78,7 @@ exports.putUpdateRecipe = (req, res, next) => {
   const cook_time = req.body.cook_time;
   const directions = req.body.directions;
   const rating = req.body.rating;
-  const creator = req.header('creator');
+  const creator = req.userId;
   //console.log(creator);
 
   Recipe.findById(recipeID)
@@ -118,16 +118,22 @@ exports.putUpdateRecipe = (req, res, next) => {
 
 //DELETE recipe by ID
 exports.deleteRecipe = (req, res, next) => {
+  const creator = req.userId;
+
   //get recipie id, delete recipe,
   Recipe.findById(req.params.recipeId)
   .then(recipe => {
       if (!recipe) {
           const error = new Error ('Could not find recipe.');
-          console.log ("no recipe found")
           error.statusCode = 404;
           throw error;
       }
-      //Validate user ?
+      //Authorize user
+      if (recipe.creator.toString() !== creator) {
+        const error = new Error('User not authorized');
+        error.statusCode = 403;
+        throw error;
+      }
 
       return Recipe.findByIdAndRemove(req.params.recipeId);
 

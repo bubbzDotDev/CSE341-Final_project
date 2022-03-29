@@ -72,7 +72,7 @@
 //POST create new user
 /**
  * @swagger
- * /add-user:
+ * /user/add-user:
  *   post:
  *     summary: Create a new user account
  *     tags: [Users]
@@ -102,7 +102,7 @@
 //GET user by ID
 /**
  * @swagger
- * /users/{id}:
+ * /user/users/{id}:
  *   get:
  *     summary: Get a user by id
  *     tags: [Users]
@@ -128,8 +128,10 @@
 //PUT user by id
 /**
  * @swagger
- * /edit-user/{userId}:
+ * /user/edit-user/{userId}:
  *    put:
+ *     security:
+ *      - bearerAuth: []
  *     summary: Update a user by id
  *     tags: [Users]
  *     parameters:
@@ -140,6 +142,12 @@
  *        required: true
  *        description: Numeric ID of the user to update
  *        example: 623bd0b9ba35e5d11659121f # Bobba Fett
+ *      - in: header
+ *        name: auth
+ *        description: a JWT token header "Bearer -token-"
+ *        required: true
+ *        schema:
+ *          type: string
  *     requestBody:
  *          content: 
  *            application/json:
@@ -166,7 +174,7 @@
 //DELETE user by id
 /**
  * @swagger
- * /delete-user/{userId}:
+ * /user/delete-user/{userId}:
  *    delete:
  *     summary: Delete user by ID
  *     tags: [Users]
@@ -178,6 +186,12 @@
  *        required: true
  *        description: ID of the user to get
  *        example: ID_GOES_HERE
+ *      - in: header
+ *        name: auth
+ *        description: a JWT token header "Bearer -token-"
+ *        required: true
+ *        schema:
+ *          type: string
  *     responses:
  *       200:
  *          description: Success message 
@@ -192,7 +206,7 @@
 //POST login user by email password
 /**
  * @swagger
- * /login:
+ * /user/login:
  *    post:
  *     summary: Logs in existing user
  *     tags: [Users]

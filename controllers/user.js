@@ -13,6 +13,14 @@ const jwt = require('jsonwebtoken');
 
 //POST user
 exports.postAddUser = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed.');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
+
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -36,7 +44,7 @@ exports.postAddUser = (req, res, next) => {
       res.status(201).json({ message: 'User created!', userId: result._id });
       
     })
-    .catch(error => {
+    .catch(err => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
@@ -58,13 +66,28 @@ exports.getUserById = (req, res, next) => {
 
 //PUT user by ID
 exports.putUpdateUser = (req, res, next) => {
+  const authUserId = req.userId;
+  const userId = req.params.userId;
+
+  //Authorize user
+  if (userId !== authUserId) {
+    const error = new Error('User not authorized');
+    error.statusCode = 403;
+    throw error;
+  }
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed.');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
   const username = req.body.username;
   const password = req.body.password;
-  const userId = req.params.userId;
-  console.log(userId);
 
 
   User.findById(userId)
@@ -74,14 +97,16 @@ exports.putUpdateUser = (req, res, next) => {
         error.statusCode = 404;
         throw error;
       }
-
-      user.firstName = firstName;
-      user.lastName = lastName;
-      user.email = email;
-      user.username = username;
-      user.password = password;
-
-      return user.save();
+      bcrypt  
+      .hash(password, 12)
+      .then(hashedPw => {
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        user.username = username;
+        user.password = hashedPw;
+        return user.save();
+      });
     })
     .then(result => {
       res.status(200).send(result);
@@ -97,6 +122,15 @@ exports.putUpdateUser = (req, res, next) => {
 //DELETE user by ID
 
 exports.deleteUser = (req, res, next) => {
+  const authUserId = req.userId;
+  const userId = req.params.userId;
+
+  //Authorize user
+  if (userId !== authUserId) {
+    const error = new Error('User not authorized');
+    error.statusCode = 403;
+    throw error;
+  }
 
   User.findById(req.params.userId)
     .then(user => {
@@ -129,7 +163,7 @@ exports.deleteUser = (req, res, next) => {
 exports.login = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
-  let loadedUser
+  let loadedUser;
   
   User.findOne({
       email: email
@@ -154,10 +188,13 @@ exports.login = (req, res, next) => {
       }
       const token = jwt.sign({
         email: loadedUser.email,
-        userId: loadedUser._id.toString(),
-      }, 'somesupersecretstring', {
+        userId: loadedUser._id.toString()
+      }, process.env.SECRET_STRING, {
         expiresIn: '1h'
       });
+
+      res.header('Authorization', 'Bearer '+ token);
+
       res.status(200).json({
         token: token,
         userId: loadedUser._id.toString()
