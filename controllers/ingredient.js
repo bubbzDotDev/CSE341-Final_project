@@ -1,4 +1,4 @@
-const Ingredient = require('../models/ingredient');
+const Ingredient = require('../models/Ingredient'); // Filename is uppercase and changing the file to lowercase won't work as a github change
 
 const { validationResult } = require('express-validator');
 
