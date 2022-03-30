@@ -38,7 +38,7 @@ const options = {
       description: "A simple Express Recipe API"
     },
     servers: [{
-      url: "http://localhost:3000"
+      url: process.env.HOST_URL
     }],
     components: {
       securitySchemes: {
