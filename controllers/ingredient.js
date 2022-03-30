@@ -63,7 +63,6 @@ exports.putIngredientById = (req, res, next) => {
   const item = req.body.item;
   const notes = req.body.notes;
   const ingredientId = req.params.ingredientId;
-  console.log(ingredientId);
 
   Ingredient.findById(ingredientId)
   .then(ingredient => {
